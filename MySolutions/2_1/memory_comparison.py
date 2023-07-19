@@ -32,7 +32,7 @@ def read_into_tuples(f: TextIOWrapper):
     return records
 
 
-def read_into_dictionary(f: TextIOWrapper):
+def read_into_dictionaries(f: TextIOWrapper):
     records = []
     rows = csv.reader(f)
     next(rows)  # Skip headers
@@ -100,7 +100,7 @@ if __name__ == "__main__":
     all_methods = [
         read_into_string,
         read_into_lines,
-        read_into_dictionary,
+        read_into_dictionaries,
         read_into_dictionary_with_pandas,
         read_into_dataframe,
         read_into_tuples,
