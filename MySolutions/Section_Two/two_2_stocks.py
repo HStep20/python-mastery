@@ -7,17 +7,8 @@ from operator import itemgetter
 from pprint import pprint
 
 from loguru import logger
+from two_1_readrides import read_into_dictionaries
 
-
-def read_into_dictionary(f: TextIOWrapper) -> list[dict]:
-    records = []
-    rows = csv.reader(f)
-    next(rows)  # Skip headers
-    for row in rows:
-        records.append(
-            {"route": row[0], "date": row[1], "daytype": row[2], "rides": int(row[3])}
-        )
-    return records
 
 
 def count_unique_routes(data: list[dict]) -> int:
@@ -71,7 +62,7 @@ if __name__ == "__main__":
     # Row Example:
     # {'date': '06/19/2004', 'daytype': 'A', 'rides': 409, 'route': '40'}
     with open("Data/ctabus.csv") as f:
-        data = read_into_dictionary(f)
+        data = read_into_dictionaries(f)
 
     # Q1 - How Many Bus Routes exist in Chicago
     logger.info(f"There are {count_unique_routes(data)} unique Bus routes in Chicago")
